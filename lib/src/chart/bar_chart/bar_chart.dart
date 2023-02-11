@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:fl_chart/src/chart/bar_chart/bar_chart_renderer.dart';
 import 'package:fl_chart/src/chart/base/axis_chart/axis_chart_scaffold_widget.dart';
+import 'package:fl_chart/src/chart/base/axis_chart/axis_barchart_scaffold_widget.dart';
 import 'package:flutter/cupertino.dart';
 
 /// Renders a bar chart as a widget, using provided [BarChartData].
@@ -48,7 +49,7 @@ class _BarChartState extends AnimatedWidgetBaseState<BarChart> {
   Widget build(BuildContext context) {
     final showingData = _getData();
 
-    return AxisChartScaffoldWidget(
+    return AxisBarchartScaffoldWidget(
       data: showingData,
       chart: BarChartLeaf(
         data: _withTouchedIndicators(_barChartDataTween!.evaluate(animation)),

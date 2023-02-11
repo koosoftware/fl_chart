@@ -19,8 +19,8 @@ import 'package:flutter/material.dart';
 /// `left`, `top`, `right`, `bottom` are some place holders to show titles
 /// provided by [AxisChartData.titlesData] around the chart
 /// `chart` is a centered place holder to show a raw chart.
-class AxisChartScaffoldWidget extends StatelessWidget {
-  const AxisChartScaffoldWidget({
+class AxisBarchartScaffoldWidget extends StatelessWidget {
+  const AxisBarchartScaffoldWidget({
     super.key,
     required this.chart,
     required this.data,
@@ -72,21 +72,10 @@ class AxisChartScaffoldWidget extends StatelessWidget {
           border: data.borderData.isVisible() ? data.borderData.border : null,
         ),
         child: chart,
-      )
+      ),
     ];
 
     int insertIndex(bool drawBelow) => drawBelow ? 0 : widgets.length;
-
-    if (showLeftTitles) {
-      widgets.insert(
-        insertIndex(data.titlesData.leftTitles.drawBelowEverything),
-        SideTitlesWidget(
-          side: AxisSide.left,
-          axisChartData: data,
-          parentSize: constraints.biggest,
-        ),
-      );
-    }
 
     if (showTopTitles) {
       widgets.insert(
@@ -123,12 +112,54 @@ class AxisChartScaffoldWidget extends StatelessWidget {
     return widgets;
   }
 
+  /*double calculateChartWidth(BuildContext context) {
+    double interval = MediaQuery.of(context).size.width < 1000 ? 130 : 260;
+    double chartWidth = MediaQuery.of(context).size.width >= interval
+        ? MediaQuery.of(context).size.width - interval
+        : MediaQuery.of(context).size.width;
+
+    try {
+      for (int i = 0; i < data.length; i++) {
+        chartWidth += interval;
+      }
+    } catch (err) {}
+
+    return chartWidth;
+  }*/
+
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Stack(children: stackWidgets(constraints));
-      },
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 100),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              width: data.titlesData.bottomTitles.sideTitles.interval,
+              padding: EdgeInsets.all(8),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Stack(
+                    children: stackWidgets(constraints),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
+        showLeftTitles
+            ? LayoutBuilder(
+                builder: (context, constraints) {
+                  return SideTitlesWidget(
+                    side: AxisSide.left,
+                    axisChartData: data,
+                    parentSize: constraints.biggest,
+                  );
+                },
+              )
+            : SizedBox(),
+      ],
     );
   }
 }

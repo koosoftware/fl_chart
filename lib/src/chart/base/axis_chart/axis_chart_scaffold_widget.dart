@@ -20,11 +20,8 @@ import 'package:flutter/material.dart';
 /// provided by [AxisChartData.titlesData] around the chart
 /// `chart` is a centered place holder to show a raw chart.
 class AxisChartScaffoldWidget extends StatelessWidget {
-  const AxisChartScaffoldWidget({
-    super.key,
-    required this.chart,
-    required this.data,
-  });
+  const AxisChartScaffoldWidget(
+      {super.key, required this.chart, required this.data, required});
   final Widget chart;
   final AxisChartData data;
 

@@ -74,7 +74,7 @@ class AxisChartScaffoldWidget extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Container(
-            width: 3000,
+            width: 3001,
             padding: EdgeInsets.all(8),
             child: chart,
           ),

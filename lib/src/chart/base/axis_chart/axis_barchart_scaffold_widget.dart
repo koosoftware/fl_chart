@@ -114,27 +114,12 @@ class AxisBarchartScaffoldWidget extends StatelessWidget {
     return widgets;
   }
 
-  /*double calculateChartWidth(BuildContext context) {
-    double interval = MediaQuery.of(context).size.width < 1000 ? 130 : 260;
-    double chartWidth = MediaQuery.of(context).size.width >= interval
-        ? MediaQuery.of(context).size.width - interval
-        : MediaQuery.of(context).size.width;
-
-    try {
-      for (int i = 0; i < data.length; i++) {
-        chartWidth += interval;
-      }
-    } catch (err) {}
-
-    return chartWidth;
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 100),
+          padding: EdgeInsets.only(left: 0),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(

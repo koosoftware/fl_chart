@@ -71,14 +71,7 @@ class AxisChartScaffoldWidget extends StatelessWidget {
         decoration: BoxDecoration(
           border: data.borderData.isVisible() ? data.borderData.border : null,
         ),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Container(
-            width: 3001,
-            padding: EdgeInsets.all(8),
-            child: chart,
-          ),
-        ),
+        child: chart,
       ),
     ];
 
@@ -134,7 +127,16 @@ class AxisChartScaffoldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Stack(children: stackWidgets(constraints));
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+            width: 3000,
+            padding: EdgeInsets.all(8),
+            child: Stack(
+              children: stackWidgets(constraints),
+            ),
+          ),
+        );
       },
     );
   }

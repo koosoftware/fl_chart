@@ -111,17 +111,32 @@ class AxisChartScaffoldWidget extends StatelessWidget {
     }
     return widgets;
   }
+  
+  double calculateChartWidth() {
+    double interval = MediaQuery.of(context).size.width < 1000 ? 130 : 260;
+    double chartWidth = MediaQuery.of(context).size.width >= interval
+        ? MediaQuery.of(context).size.width - interval
+        : MediaQuery.of(context).size.width;
+
+    try {
+      for (int i = 0; i < data.length; i++) {
+        chartWidth += interval;
+      }
+    } catch (err) {}
+
+    return chartWidth;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 60),
+          padding: EdgeInsets.only(left: 100),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
-              width: 3000,
+              width: calculateChartWidth(),
               padding: EdgeInsets.all(8),
               child: LayoutBuilder(
                 builder: (context, constraints) {

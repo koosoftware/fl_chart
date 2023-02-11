@@ -24,9 +24,11 @@ class AxisBarchartScaffoldWidget extends StatelessWidget {
     super.key,
     required this.chart,
     required this.data,
+    required this.groupSpace,
   });
   final Widget chart;
   final AxisChartData data;
+  final double groupSpace;
 
   bool get showLeftTitles {
     if (!data.titlesData.show) {
@@ -136,7 +138,7 @@ class AxisBarchartScaffoldWidget extends StatelessWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
-              width: 3000,
+              width: groupSpace,
               padding: EdgeInsets.all(8),
               child: LayoutBuilder(
                 builder: (context, constraints) {

@@ -51,6 +51,7 @@ class _BarChartState extends AnimatedWidgetBaseState<BarChart> {
 
     return AxisBarchartScaffoldWidget(
       data: showingData,
+      groupSpace: showingData.groupsSpace,
       chart: BarChartLeaf(
         data: _withTouchedIndicators(_barChartDataTween!.evaluate(animation)),
         targetData: _withTouchedIndicators(showingData),

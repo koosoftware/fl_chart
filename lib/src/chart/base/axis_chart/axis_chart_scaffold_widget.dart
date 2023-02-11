@@ -116,18 +116,20 @@ class AxisChartScaffoldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Container(
-            width: 3000,
-            padding: EdgeInsets.all(8),
-            margin: EdgeInsets.only(left: 100),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Stack(
-                  children: stackWidgets(constraints),
-                );
-              },
+        Padding(
+          padding: EdgeInsets.only(left: 100),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              width: 3000,
+              padding: EdgeInsets.all(8),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Stack(
+                    children: stackWidgets(constraints),
+                  );
+                },
+              ),
             ),
           ),
         ),

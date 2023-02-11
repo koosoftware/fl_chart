@@ -70,6 +70,7 @@ class AxisBarchartScaffoldWidget extends StatelessWidget {
     final widgets = <Widget>[
       Container(
         margin: EdgeInsets.only(
+          left: 0,
           right: data.titlesData.allSidesPadding.right,
           top: data.titlesData.allSidesPadding.top,
           bottom: data.titlesData.allSidesPadding.bottom,

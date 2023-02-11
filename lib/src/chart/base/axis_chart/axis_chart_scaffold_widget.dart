@@ -71,8 +71,15 @@ class AxisChartScaffoldWidget extends StatelessWidget {
         decoration: BoxDecoration(
           border: data.borderData.isVisible() ? data.borderData.border : null,
         ),
-        child: chart,
-      )
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+            width: 3000,
+            padding: EdgeInsets.all(8),
+            child: chart,
+          ),
+        ),
+      ),
     ];
 
     int insertIndex(bool drawBelow) => drawBelow ? 0 : widgets.length;

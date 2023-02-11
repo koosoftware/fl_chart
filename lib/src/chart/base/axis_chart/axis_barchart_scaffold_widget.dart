@@ -69,7 +69,11 @@ class AxisBarchartScaffoldWidget extends StatelessWidget {
   List<Widget> stackWidgets(BoxConstraints constraints) {
     final widgets = <Widget>[
       Container(
-        //margin: data.titlesData.allSidesPadding,
+        margin: EdgeInsets.only(
+          right: data.titlesData.allSidesPadding.right,
+          top: data.titlesData.allSidesPadding.top,
+          bottom: data.titlesData.allSidesPadding.bottom,
+        ),
         decoration: BoxDecoration(
           border: data.borderData.isVisible() ? data.borderData.border : null,
         ),

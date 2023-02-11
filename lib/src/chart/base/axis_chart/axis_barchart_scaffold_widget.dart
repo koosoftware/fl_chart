@@ -119,7 +119,8 @@ class AxisBarchartScaffoldWidget extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 100),
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width < 1000 ? 50 : 100),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(

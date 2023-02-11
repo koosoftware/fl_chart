@@ -77,17 +77,6 @@ class AxisChartScaffoldWidget extends StatelessWidget {
 
     int insertIndex(bool drawBelow) => drawBelow ? 0 : widgets.length;
 
-    if (showLeftTitles) {
-      widgets.insert(
-        insertIndex(data.titlesData.leftTitles.drawBelowEverything),
-        SideTitlesWidget(
-          side: AxisSide.left,
-          axisChartData: data,
-          parentSize: constraints.biggest,
-        ),
-      );
-    }
-
     if (showTopTitles) {
       widgets.insert(
         insertIndex(data.titlesData.topTitles.drawBelowEverything),
@@ -141,6 +130,15 @@ class AxisChartScaffoldWidget extends StatelessWidget {
             ),
           ),
         ),
+        showLeftTitles ? LayoutBuilder(
+          builder: (context, constraints) {
+            return SideTitlesWidget(
+              side: AxisSide.left,
+              axisChartData: data,
+              parentSize: constraints.biggest,
+            );
+          },
+        ): SizedBox(),
       ],
     );
   }
